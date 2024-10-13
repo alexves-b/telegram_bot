@@ -47,7 +47,7 @@ public class WeatherBot extends TelegramLongPollingBot {
                 sendMessage(chatId, weatherInfo);
                 log.debug(cityName);
             } else {
-                sendMessage(chatId, "Введите команду /weather <название города>");
+                sendMessage(chatId, " Вы ввели неверную команду. Для получения погоды, введите команду /weather <название города>");
             }
         }
     }
@@ -61,7 +61,7 @@ public class WeatherBot extends TelegramLongPollingBot {
         }
         // Вызов вашего сервиса получения данных о погоде
         // Имплементируйте логику получения данных о погоде из API
-        return "Погода в " + cityName + response; // Замените реальной логикой
+        return response; // Замените реальной логикой
     }
 
     private void sendMessage(String chatId, String text) {
