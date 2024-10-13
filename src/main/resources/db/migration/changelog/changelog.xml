@@ -10,9 +10,9 @@
             <column name="user_uuid" type="UUID">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="telegram_id" type="BIGINT"/>
+            <column name="telegram_id" type="VARCHAR(50)"/>
             <column name="user_request" type="VARCHAR(50)"/>
-            <column name="request_time" type="TIMESTAMP"/>
+            <column name="request_time" type="VARCHAR(50)"/>
             <column name="user_response" type="VARCHAR(400)"/>
         </createTable>
     </changeSet>
