@@ -12,18 +12,15 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 @Component
 public class WeatherBot extends TelegramLongPollingBot {
 
-    @Autowired
-    private WeatherService weatherService;
-
 
     @Override
     public String getBotUsername() {
-        return "weatherTgBobrAiBot";
+        return " Italy_Supprot_bot";
     }
 
     @Override
     public String getBotToken() {
-        return "7793921994:AAFM6yZRCzdtZK_gHB6yudfG1qslp_ydKXU";
+        return "8493351714:AAHTJGma-iNOCElZXa1wRAir42VtRUD3T9o";
     }
 
 
@@ -31,30 +28,11 @@ public class WeatherBot extends TelegramLongPollingBot {
         if (update.hasMessage() && update.getMessage().hasText()) {
             String userMessage = update.getMessage().getText();
             String chatId = update.getMessage().getChatId().toString();
+                sendMessage(chatId, "Постоянный чат-бот Техподдержки Итали переехал сюда\n----> @italy_support_bot");
 
-            if (userMessage.startsWith("/weather")) {
-                String cityName = userMessage.substring(9).trim();
-                System.out.println(chatId);
-                String weatherInfo = getWeather(cityName);
-                sendMessage(chatId, weatherInfo);
-                saveWeather(cityName,weatherInfo,chatId);
-            } else {
-                sendMessage(chatId, " Вы ввели неверную команду. Для получения погоды, введите команду /weather <название города>");
-            }
         }
     }
 
-    private String getWeather(String cityName) {
-        String response =  weatherService.getWeather(cityName);
-        if(response == null) {
-            return "Погоду не удалось получить";
-        }
-        return response;
-    }
-
-    private void saveWeather(String request,String weatherInfo,String chatId) {
-        weatherService.saveInfo(chatId,request,weatherInfo);
-    }
 
     private void sendMessage(String chatId, String text) {
         SendMessage message = new SendMessage();

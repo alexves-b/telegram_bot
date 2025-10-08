@@ -2,8 +2,6 @@ package my.example.Weather.bot.servise;
 
 
 import lombok.extern.slf4j.Slf4j;
-import my.example.Weather.bot.Model.UserRequestModel;
-import my.example.Weather.bot.repository.UserRequestRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -21,8 +19,6 @@ public class WeatherService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Autowired
-    private UserRequestRepository userRequestRepository;
 
     public String getWeather(String cityName) {
         try {
@@ -60,11 +56,5 @@ public class WeatherService {
             System.err.println( e.fillInStackTrace());
         }
         return null;
-    }
-
-    public void saveInfo(String chatId,String request,String weatherInfo) {
-        LocalDateTime localDateTime = LocalDateTime.now();
-        UserRequestModel userRequestModel = new UserRequestModel(chatId,request,weatherInfo,localDateTime.toString());
-        userRequestRepository.save(userRequestModel);
     }
 }

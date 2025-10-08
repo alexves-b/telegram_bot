@@ -1,17 +1,3 @@
 spring:
   application:
-    name: Weather_tgBot_for_BobrAI
-  datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: admin
-    driver-class-name: org.postgresql.Driver
-
-  liquibase:
-    enabled: true
-    change-log: classpath:db/migration/changelog/changelog.xml
-    contexts: dev
-
-open_weather_map:
-  api_key: 618f3266441d9ec859db854ec9ed7c5f
-
+    name: Italy_Supprot_bot
